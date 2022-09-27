@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     digitalocean = {
-      source = "hashicorp/digitalocean"
+      source = "digitalocean/digitalocean"
     }
   }
 }
