@@ -4,7 +4,6 @@ terraform {
     skip_metadata_api_check = true
     endpoint = "https://nyc3.digitaloceanspaces.com"
     region = "us-east-1"
-    workspace_key_prefix = "state/k8s"
-    key = "terraform.tfstate"
+    key = "k8s.terraform.tfstate"
   }
 }
