@@ -30,5 +30,5 @@ variable "spaces_secret_key" {
 variable "k8s_node_pool_size" {
   description = "Kubernetes Node Pool Size"
   type = number
-  default = 1
+  default = "s-1vcpu-2gb"
 }
