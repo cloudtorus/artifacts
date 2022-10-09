@@ -1,16 +1,28 @@
 data "terraform_remote_state" "pgsql_db" {
   backend = "s3"
   config = {
+    endpoint = "https://nyc3.digitaloceanspaces.com"
+    region = var.region
     bucket = var.backend_bucket
-    prefix = "postgresql.terraform.tfstate"
+    key = "postgresql.terraform.tfstate"
+    access_key = var.spaces_access_id
+    secret_key = var.spaces_secret_key
+    skip_credentials_validation = true
+    skip_region_validation = true
   }
 }
 
 data "terraform_remote_state" "k8s" {
   backend = "s3"
   config = {
+    endpoint = "https://nyc3.digitaloceanspaces.com"
+    region = var.region
     bucket = var.backend_bucket
     key = "k8s.terraform.tfstate"
+    access_key = var.spaces_access_id
+    secret_key = var.spaces_secret_key
+    skip_credentials_validation = true
+    skip_region_validation = true
   }
 }
 
