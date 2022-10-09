@@ -31,7 +31,7 @@ data "digitalocean_kubernetes_cluster" "main" {
 }
 
 provider "kubernetes" {
-  host = "https://${data.terraform_remote_state.k8s.outputs.k8s_cluster_endpoint}"
+  host = data.terraform_remote_state.k8s.outputs.k8s_cluster_endpoint
   token = data.digitalocean_kubernetes_cluster.main.kube_config[0].token
   cluster_ca_certificate = base64decode(data.digitalocean_kubernetes_cluster.main.kube_config[0].cluster_ca_certificate)
 }
