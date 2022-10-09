@@ -11,7 +11,6 @@ variable "project" {
 variable "region" {
   description = "Region"
   type = string
-  default = "nyc3"
 }
 
 variable "token" {

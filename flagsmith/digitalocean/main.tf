@@ -1,8 +1,8 @@
 data "terraform_remote_state" "pgsql_db" {
   backend = "s3"
   config = {
-    endpoint = "https://nyc3.digitaloceanspaces.com"
-    region = var.region
+    endpoint = "https://${var.region}.digitaloceanspaces.com"
+    region = "us-east-1"
     bucket = var.backend_bucket
     key = "postgresql.terraform.tfstate"
     access_key = var.spaces_access_id
@@ -15,8 +15,8 @@ data "terraform_remote_state" "pgsql_db" {
 data "terraform_remote_state" "k8s" {
   backend = "s3"
   config = {
-    endpoint = "https://nyc3.digitaloceanspaces.com"
-    region = var.region
+    endpoint = "https://${var.region}.digitaloceanspaces.com"
+    region = "us-east-1"
     bucket = var.backend_bucket
     key = "k8s.terraform.tfstate"
     access_key = var.spaces_access_id
