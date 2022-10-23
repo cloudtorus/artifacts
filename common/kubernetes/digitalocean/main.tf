@@ -6,6 +6,6 @@ resource "digitalocean_kubernetes_cluster" "main" {
   node_pool {
     name = "${var.installation}-k8s-node-pool"
     size = var.k8s_node_pool_size
-    node_count = 1
+    node_count = 2
   }
 }
