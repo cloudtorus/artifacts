@@ -32,7 +32,7 @@ resource "digitalocean_database_connection_pool" "main" {
   name = "${var.installation}-db-conn-pool"
   mode = "transaction"
   size = 20
-  db_name = digitalocean_database_cluster.main.name
+  db_name = digitalocean_database_db.main.name
   user = "app"
 }
 
