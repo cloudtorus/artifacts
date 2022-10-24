@@ -20,10 +20,17 @@ variable "token" {
 
 variable "spaces_access_id" {
   description = "DigitalOcean Spaces Access Key"
+  type = string
 }
 
 variable "spaces_secret_key" {
   description = "DigitalOcean Spaces Secret Key"
+  type = string
+}
+
+variable "backend_bucket" {
+  description = "Backend bucket for Terraform state"
+  type = string
 }
 
 variable "k8s_node_pool_size" {
