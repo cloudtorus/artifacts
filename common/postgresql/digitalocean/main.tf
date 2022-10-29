@@ -12,6 +12,15 @@ resource "digitalocean_database_db" "main" {
   name    = "${var.installation}-db"
 }
 
+resource "digitalocean_database_user" "app" {
+  cluster_id = digitalocean_database_cluster.main.id
+  name = "app"
+}
+
+data "digitalocean_database_ca" "main" {
+  cluster_id = digitalocean_database_cluster.main.id
+}
+
 resource "digitalocean_database_connection_pool" "main" {
   cluster_id = digitalocean_database_cluster.main.id
   name = "${var.installation}-db-conn-pool"
@@ -19,9 +28,5 @@ resource "digitalocean_database_connection_pool" "main" {
   size = 20
   db_name = digitalocean_database_db.main.name
   user = "app"
-}
-
-resource "digitalocean_database_user" "app" {
-  cluster_id = digitalocean_database_cluster.main.id
-  name = "app"
+  depends_on = [digitalocean_database_db.main]
 }

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flagsmith
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      App: Flagsmith
+  template:
+    metadata:
+      labels:
+        App: Flagsmith
+    spec:
+      containers:
+        - name: flagsmith
+          image: flagsmith/flagsmith:latest
+          ports:
+            - containerPort: 8000
+            - containerPort: 5432
+          env:
+            - name: ENV
+              value: prod
+            - name: DJANGO_ALLOWED_HOSTS
+              value: "*"
+            - name: DISABLE_INFLUXDB_FEATURES
+              value: "true"
+            - name: DATABASE_URL
+              value: {{ required "A value .Values.postgresql.connection_uri entry required!" .Values.postgresql.connection_uri }}
+            - name: PGSSLMODE
+              value: "require"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 50Mi
+{{ if .Values.postgresql.connection_ca }}
+          volumeMounts:
+            - name: postgresql-ca
+              mountPath: /etc/ssl/certs/postgresql_ca.pem
+              subPath: postgresql_ca.pem
+              readOnly: false
+      volumes:
+        - name: postgresql-ca
+          configMap:
+            name: config
+            items:
+              - key: postgresql_ca
+                path: postgresql_ca.pem
+{{ end }}

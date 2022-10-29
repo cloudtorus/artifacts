@@ -36,7 +36,16 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.digitalocean_kubernetes_cluster.main.kube_config[0].cluster_ca_certificate)
 }
 
+provider "helm" {
+  kubernetes {
+    host                   = data.terraform_remote_state.k8s.outputs.k8s_cluster_endpoint
+    token                  = data.digitalocean_kubernetes_cluster.main.kube_config[0].token
+    cluster_ca_certificate = base64decode(data.digitalocean_kubernetes_cluster.main.kube_config[0].cluster_ca_certificate)
+  }
+}
+
 module "deployment" {
   source = "../common/deployment"
   database_uri = data.terraform_remote_state.pgsql_db.outputs.pgsql_db_uri
+  database_ca =  data.terraform_remote_state.pgsql_db.outputs.pgsql_db_ca
 }
