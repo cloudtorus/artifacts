@@ -21,6 +21,11 @@ data "digitalocean_database_ca" "main" {
   cluster_id = digitalocean_database_cluster.main.id
 }
 
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [digitalocean_database_db.main]
+  create_duration = "30s"
+}
+
 resource "digitalocean_database_connection_pool" "main" {
   cluster_id = digitalocean_database_cluster.main.id
   name = "${var.installation}-db-conn-pool"
@@ -28,5 +33,5 @@ resource "digitalocean_database_connection_pool" "main" {
   size = 20
   db_name = digitalocean_database_db.main.name
   user = "app"
-  depends_on = [digitalocean_database_db.main]
+  depends_on = [digitalocean_database_db.main, time_sleep.wait_30_seconds]
 }
