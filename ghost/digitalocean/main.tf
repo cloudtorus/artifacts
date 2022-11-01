@@ -1,4 +1,4 @@
-data "terraform_remote_state" "pgsql_db" {
+data "terraform_remote_state" "database" {
   backend = "s3"
   config = {
     endpoint = "https://${var.region}.digitaloceanspaces.com"
@@ -12,7 +12,7 @@ data "terraform_remote_state" "pgsql_db" {
   }
 }
 
-data "terraform_remote_state" "k8s" {
+data "terraform_remote_state" "kubernetes" {
   backend = "s3"
   config = {
     endpoint = "https://${var.region}.digitaloceanspaces.com"
@@ -26,19 +26,19 @@ data "terraform_remote_state" "k8s" {
   }
 }
 
-data "digitalocean_kubernetes_cluster" "main" {
-  name = data.terraform_remote_state.k8s.outputs.k8s_cluster_name
+data  "digitalocean_kubernetes_cluster" "main" {
+  name = data.terraform_remote_state.kubernetes.outputs.k8s_cluster_name
 }
 
 provider "kubernetes" {
-  host = data.terraform_remote_state.k8s.outputs.k8s_cluster_endpoint
+  host = data.terraform_remote_state.kubernetes.outputs.k8s_cluster_endpoint
   token = data.digitalocean_kubernetes_cluster.main.kube_config[0].token
   cluster_ca_certificate = base64decode(data.digitalocean_kubernetes_cluster.main.kube_config[0].cluster_ca_certificate)
 }
 
 provider "helm" {
   kubernetes {
-    host                   = data.terraform_remote_state.k8s.outputs.k8s_cluster_endpoint
+    host                   = data.terraform_remote_state.kubernetes.outputs.k8s_cluster_endpoint
     token                  = data.digitalocean_kubernetes_cluster.main.kube_config[0].token
     cluster_ca_certificate = base64decode(data.digitalocean_kubernetes_cluster.main.kube_config[0].cluster_ca_certificate)
   }
@@ -46,6 +46,14 @@ provider "helm" {
 
 module "deployment" {
   source = "../common/deployment"
-  database_uri = data.terraform_remote_state.pgsql_db.outputs.pgsql_db_uri
-  database_ca =  data.terraform_remote_state.pgsql_db.outputs.pgsql_db_ca
+  database = {
+    user = data.terraform_remote_state.database.outputs.user
+    password = data.terraform_remote_state.database.outputs.password
+    host = data.terraform_remote_state.database.outputs.host
+    port = data.terraform_remote_state.database.outputs.port
+    name = data.terraform_remote_state.database.outputs.name
+    ssl = {
+      ca = data.terraform_remote_state.database.outputs.pgsql_db_ca
+    }
+  }
 }

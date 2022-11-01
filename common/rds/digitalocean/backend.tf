@@ -5,6 +5,6 @@ terraform {
     endpoint = "https://nyc3.digitaloceanspaces.com"
     region = "us-east-1"
     workspace_key_prefix = "state/pgsql"
-    key = "postgresql.terraform.tfstate"
+    key = "rds.terraform.tfstate"
   }
 }

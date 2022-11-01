@@ -1,7 +1,7 @@
 resource "digitalocean_database_cluster" "main" {
   name = "${var.installation}-db-cluster"
-  engine = "pg"
-  version = "11"
+  engine = var.engine
+  version = var.engine == "pg" ? "11" : "8"
   size = "db-s-1vcpu-1gb"
   region = var.region
   node_count = 1
@@ -33,5 +33,7 @@ resource "digitalocean_database_connection_pool" "main" {
   size = 20
   db_name = digitalocean_database_db.main.name
   user = "app"
+  count = var.engine == "pg" ? 1 : 0
   depends_on = [digitalocean_database_db.main, time_sleep.wait_30_seconds]
 }
+

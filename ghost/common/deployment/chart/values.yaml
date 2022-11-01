@@ -1,0 +1,10 @@
+environment: production
+url: ""
+database:
+  user: ""
+  password: ""
+  host: ""
+  port: ""
+  name: ""
+  ssl:
+    ca: ""

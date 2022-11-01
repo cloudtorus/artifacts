@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      App: Ghost
+  template:
+    metadata:
+      labels:
+        App: Ghost
+    spec:
+      containers:
+        - name: ghost
+          image: ghost:4.48.6-alpine
+          ports:
+            - containerPort: 2368
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.environment }}
+{{ if eq .Values.environment "development" }}
+            - name: DEBUG
+              value: "*"
+{{end}}
+{{ if .Values.url}}
+            - name: url
+              value: {{ .Values.url }}
+{{ end }}
+            - name: database__client
+              value: mysql
+            - name: database__connection__host
+              value: {{ required "database.host is required" .Values.database.host }}
+            - name: database__connection__port
+              value: "{{ required "database.port is required" .Values.database.port }}"
+            - name: database__connection__user
+              value: {{ required "database.user is required" .Values.database.user }}
+            - name: database__connection__password
+              value: {{ required "database.password is required" .Values.database.password }}
+            - name: database__connection__database
+              value: {{ required "database.name is required" .Values.database.name }}
+            - name: database__ssl__ca
+              value: |
+{{ required "database.ssl.ca is required" .Values.database.ssl.ca | indent 16 }}
