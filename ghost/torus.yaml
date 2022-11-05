@@ -15,3 +15,4 @@ dependencies:
   - module: primitives/sql
     requirements:
       engine: mysql
+    unique: true
