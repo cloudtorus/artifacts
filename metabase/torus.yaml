@@ -1,0 +1,17 @@
+version: v1
+name: Metabase
+description: Business Intelligence For Everyone
+tags:
+  - SaaS
+paths:
+  - helm/**
+  - terraform/{{provider}}/**
+  - terraform/helm/**
+providers:
+  - google
+  - digitalocean
+dependencies:
+  - primitives/cluster
+  - module: primitives/sql
+    requirements:
+      engine: pg

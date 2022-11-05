@@ -1,9 +1,9 @@
 resource "helm_release" "app" {
   name  = "ghost"
-  chart = "${path.module}/chart"
+  chart = "${path.module}/../../helm/ghost"
 
   values = [
-    file("${path.module}/chart/values.yaml")
+    file("${path.module}/../../helm/ghost/values.yaml")
   ]
 
   set {

@@ -1,0 +1,17 @@
+version: v1
+name: Flagsmith
+description: An open-source feature flag and remote configuration service
+type:
+  - SaaS
+paths:
+  - helm/**
+  - terraform/{{provider}}/**
+  - terraform/helm/**
+providers:
+  - google
+  - digitalocean
+dependencies:
+  - primitives/cluster
+  - module: primitives/sql
+    requirements:
+      engine: pg
