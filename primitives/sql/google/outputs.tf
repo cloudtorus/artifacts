@@ -24,7 +24,7 @@ output "name" {
 }
 
 output "uri" {
-  value = "${engine == "pg" ? "postgres" : "mysql"}://${google_sql_user.main.name}:${google_sql_user.main.password}@${google_sql_database_instance.main.private_ip_address}/${google_sql_database.main.name}"
+  value = "${var.engine == "pg" ? "postgres" : "mysql"}://${google_sql_user.main.name}:${google_sql_user.main.password}@${google_sql_database_instance.main.private_ip_address}/${google_sql_database.main.name}"
   sensitive = true
 }
 
