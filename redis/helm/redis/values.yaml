@@ -1,0 +1,4 @@
+redis:
+  auth:
+    enabled: true
+    password: "" # passed in from Terraform
