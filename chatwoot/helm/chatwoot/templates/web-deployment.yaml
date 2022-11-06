@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatwoot
+  labels:
+    app: chatwoot
+    role: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatwoot
+      role: web
+  template:
+    metadata:
+      labels:
+        app: chatwoot
+        role: web
+    spec:
+      containers:
+        - image: chatwoot/chatwoot:v2.10.0-ce
+          name: chatwoot
+          ports:
+            - containerPort: 3000
+          args:
+            - bundle
+            - exec
+            - rails
+            - s
+            - -p
+            - "3000"
+            - -b
+            - 0.0.0.0
+          command:
+            - docker/entrypoints/rails.sh
+          envFrom:
+            - secretRef:
+                name: secrets
+          env:
+            - name: POSTGRES_HOST
+              value: {{ required "database.host is required" .Values.database.host | quote }}
+            - name: POSTGRES_PORT
+              value: {{ required "database.port is required" .Values.database.port | quote }}
+            - name: POSTGRES_USERNAME
+              value: {{ required "database.user is required" .Values.database.user | quote }}
+            - name: POSTGRES_DATABASE
+              value: {{ required "database.name is required" .Values.database.name | quote }}
+            - name: REDIS_HOST
+              value: {{ required "redis.host is required" .Values.redis.host | quote }}
+            - name: REDIS_PORT
+              value: {{ required "redis.port is required" .Values.redis.port | quote }}
+{{ if .Values.database.ssl.ca }}
+            - name: PGSSLMODE
+              value: "require"
+          volumeMounts:
+            - name: database-ssl-ca
+              mountPath: /etc/ssl/certs/database-ssl-ca.pem
+              subPath: database-ssl-ca.pem
+              readOnly: false
+      volumes:
+        - name: database-ssl-ca
+          configMap:
+            name: config
+            items:
+              - key: database-ssl-ca
+                path: database-ssl-ca.pem
+{{end}}

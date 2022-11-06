@@ -32,4 +32,5 @@ provider "helm" {
 
 module "deployment" {
   source = "../helm"
+  name = "redis"
 }
