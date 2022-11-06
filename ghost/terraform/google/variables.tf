@@ -8,13 +8,18 @@ variable "project" {
   type = string
 }
 
+variable "region" {
+  description = "Region"
+  default = "us-central1"
+  type = string
+}
+
 variable "credentials" {
   description = "Google Cloud service account"
   type = string
 }
 
-variable "region" {
-  description = "Region for deployment"
-  default = "us-central1"
+variable "backend_bucket" {
+  description = "Terraform State Bucket (internal)"
   type = string
 }
