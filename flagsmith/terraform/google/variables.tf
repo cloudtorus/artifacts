@@ -10,6 +10,7 @@ variable "project" {
 
 variable "region" {
   description = "Region"
+  default = "us-central1"
   type = string
 }
 
