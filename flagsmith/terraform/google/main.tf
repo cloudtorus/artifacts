@@ -9,7 +9,7 @@ data "terraform_remote_state" "cluster" {
 
 data "terraform_remote_state" "sql" {
   backend = "gcs"
-  config {
+  config = {
     bucket = var.backend_bucket
     prefix = "terraform/primitives/sql"
     credentials = var.credentials
