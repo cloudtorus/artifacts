@@ -26,5 +26,6 @@ variable "backend_bucket" {
 
 variable "engine" {
   description = "Engine - mysql or pg"
+  default = "pg"
   type = string
 }
