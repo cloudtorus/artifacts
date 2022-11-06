@@ -32,7 +32,6 @@ resource "google_sql_database_instance" "main" {
     tier = "db-f1-micro"
     ip_configuration {
       private_network = data.terraform_remote_state.vpc.outputs.vpc_id
-      require_ssl = true
     }
   }
 
