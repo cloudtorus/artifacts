@@ -29,7 +29,7 @@ resource "time_sleep" "wait_30_seconds" {
 resource "digitalocean_database_connection_pool" "main" {
   cluster_id = digitalocean_database_cluster.main.id
   name = "${var.installation}-db-conn-pool"
-  mode = "transaction"
+  mode = "session"
   size = 20
   db_name = digitalocean_database_db.main.name
   user = "app"

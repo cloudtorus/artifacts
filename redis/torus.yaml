@@ -1,0 +1,10 @@
+version: v1
+name: Redis
+description: Remote Dictionary Server
+tags:
+  - Data
+  - Cache
+providers:
+  - digitalocean
+dependencies:
+  - primitives/cluster
