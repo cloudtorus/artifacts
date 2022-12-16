@@ -1,0 +1,19 @@
+plugins {
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.groovy:groovy-all:4.0.6'
+    implementation 'org.apache.groovy:groovy-yaml:4.0.6'
+}
+
+task runScript(dependsOn: 'classes', type: JavaExec) {
+    description 'Run src.main.groovy.aggregator'
+    main = 'aggregator'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
