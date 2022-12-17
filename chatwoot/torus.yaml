@@ -3,6 +3,10 @@ name: Chatwoot
 description: Chatwoot gives you all the tools to manage conversations, build relationships and delight your customers from one place.
 tags:
   - SaaS
+paths:
+  - helm/**
+  - 'terraform/{{provider}}/**'
+  - terraform/helm/**
 providers:
   - digitalocean
 dependencies:

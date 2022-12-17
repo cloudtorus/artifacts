@@ -4,6 +4,10 @@ description: Remote Dictionary Server
 tags:
   - Data
   - Cache
+paths:
+  - helm/**
+  - 'terraform/{{provider}}/**'
+  - terraform/helm/**
 providers:
   - digitalocean
 dependencies:

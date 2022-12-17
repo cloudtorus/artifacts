@@ -5,7 +5,7 @@ tags:
   - Open Source
 paths:
   - helm/**
-  - terraform/{{provider}}/**
+  - 'terraform/{{provider}}/**'
   - terraform/helm/**
 providers:
   - google

@@ -5,7 +5,7 @@ tags:
   - Data
   - Primitive
 paths:
-  - {{provider}}/**
+  - '{{provider}}/**'
 providers:
   - google
   - digitalocean

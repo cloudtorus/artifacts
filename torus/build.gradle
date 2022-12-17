@@ -11,9 +11,16 @@ dependencies {
     implementation 'org.apache.groovy:groovy-yaml:4.0.6'
 }
 
-task runScript(dependsOn: 'classes', type: JavaExec) {
-    description 'Run src.main.groovy.aggregator'
-    main = 'aggregator'
+task validate(dependsOn: 'classes', type: JavaExec) {
+    description 'Validate '
+    mainClass = 'validate'
     classpath = sourceSets.main.runtimeClasspath
+}
+
+task load(dependsOn: 'classes', type: JavaExec) {
+    description 'Run src.main.groovy.aggregator'
+    mainClass = 'Artifacts'
+    classpath = sourceSets.main.runtimeClasspath
+
 }
 

@@ -5,7 +5,7 @@ tags:
   - SaaS
 paths:
   - helm/**
-  - terraform/{{provider}}/**
+  - 'terraform/{{provider}}/**'
   - terraform/helm/**
 providers:
   - google

@@ -3,6 +3,6 @@ name: VPC network
 tags:
   - Primitive
 paths:
-  - {{provider}}/**
+  - '{{provider}}/**'
 providers:
   - google
