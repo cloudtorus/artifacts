@@ -12,7 +12,8 @@ providers:
   - digitalocean
 dependencies:
   - primitives/cluster
-  - module: primitives/sql
+  - name: Database
+    ref: primitives/sql
     requirements:
       engine: mysql
     unique: true

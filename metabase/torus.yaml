@@ -12,7 +12,8 @@ providers:
   - digitalocean
 dependencies:
   - primitives/cluster
-  - module: primitives/sql
+  - ref: primitives/sql
+    name: Metabase's Database
     requirements:
       engine: pg
     unique: true

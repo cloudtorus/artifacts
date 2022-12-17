@@ -1,1 +1,5 @@
-def artifacts = new ArtifactsManager().parse()
+def artifacts = new ArtifactManager().populateFromDisk()
+
+artifacts.each {
+
+}

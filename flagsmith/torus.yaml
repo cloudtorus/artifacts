@@ -12,11 +12,10 @@ providers:
   - digitalocean
 dependencies:
   - name: Kubernetes Cluster
-    module: primitives/cluster
+    ref: primitives/cluster
   - name: Postgres Database
-    module:
-    - primitives/sql
-    - sql
+    refs:
+      - primitives/sql
     requirements:
       engine: pg
     unique: true

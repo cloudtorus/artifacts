@@ -11,6 +11,6 @@ providers:
   - digitalocean
 dependencies:
   - name: VPC Network
-    module: primitives/sql
+    ref: primitives/vpc
     providers:
       - google
