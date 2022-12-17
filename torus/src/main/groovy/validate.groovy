@@ -1,16 +1,16 @@
-def artifacts = new ArtifactManager(beforeParse: { param ->
+def manager = new ArtifactManager(beforeParse: { param ->
     println "Parsing ${param}"
 }, afterParse: {
     println "Parsed ${it.ref}"
     println "--------------------------"
 })
-artifacts.populateFromDisk()
+manager.populateFromDisk()
 
 println()
 println "=========================="
 println()
 
-artifacts.artifacts.each {
+manager.artifacts.each {
     print "${it.ref} ->"
     it.dependencies.each { dependency ->
         print ' ('

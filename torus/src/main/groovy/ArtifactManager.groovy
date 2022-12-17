@@ -4,8 +4,8 @@ import groovy.yaml.YamlSlurper
 import java.nio.file.Path
 
 class ArtifactManager {
-    Closure<Void> beforeParse
-    Closure<Void> afterParse
+    Closure<Void> beforeParse = {}
+    Closure<Void> afterParse = {}
     private List<Artifact> artifacts = []
 
     def getArtifacts() {
@@ -87,6 +87,7 @@ class ArtifactManager {
             def parsed = yamlMap[module] = new Artifact(
                     name: yamlArtifact.name,
                     version: yamlArtifact.version,
+                    description: yamlArtifact.description,
                     tags: yamlArtifact.tags,
                     paths: yamlArtifact.paths,
                     providers: yamlArtifact.providers,
