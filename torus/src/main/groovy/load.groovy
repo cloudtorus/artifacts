@@ -23,6 +23,7 @@ def applicationDocuments = manager.artifacts.stream().map {
     new Document()
         .append('name', it.name)
         .append('ref', it.ref)
+        .append('icon', it.icon)
         .append('version', it.version)
         .append('repository', 'https://github.com/cloudtorus/artifacts')
         .append('description', it.description)

@@ -1,5 +1,6 @@
 version: v1
 name: Flagsmith
+icon: https://cdn.cloudtorus.com/static/logos/artifacts/flagsmith.svg
 description: An open-source feature flag and remote configuration service
 tags:
   - SaaS

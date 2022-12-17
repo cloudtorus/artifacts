@@ -1,5 +1,6 @@
 version: v1
 name: Ghost
+icon: https://cdn.cloudtorus.com/static/logos/artifacts/ghost.png
 description: Turn your audience into a business.
 tags:
   - Open Source

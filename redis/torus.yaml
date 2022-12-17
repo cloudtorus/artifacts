@@ -1,5 +1,6 @@
 version: v1
 name: Redis
+icon: https://cdn.cloudtorus.com/static/logos/artifacts/redis.svg
 description: Remote Dictionary Server
 tags:
   - Data

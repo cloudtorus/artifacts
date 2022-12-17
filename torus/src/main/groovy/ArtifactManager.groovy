@@ -37,6 +37,8 @@ class ArtifactManager {
 
             assert yamlArtifact.version instanceof String, 'version is required'
             assert yamlArtifact.name instanceof String, 'name is required'
+            assert yamlArtifact.icon == null || yamlArtifact.icon instanceof String, 'icon must be a string'
+            assert yamlArtifact.description  == null || yamlArtifact.description instanceof String, 'description must be a string'
             assert yamlArtifact.tags instanceof List, 'tags is required'
             assert yamlArtifact.paths instanceof List, 'paths is required'
             assert yamlArtifact.providers instanceof List, 'providers is required'
@@ -46,9 +48,9 @@ class ArtifactManager {
 
             yamlArtifact.dependencies = (yamlArtifact.dependencies as List).stream().map {
                 if (it instanceof String) {
-                    return new ArtifactYamlDependency(
+                    return new ArtifactDependency(
                             name: it,
-                            refs: List.of(new ArtifactYamlReference(
+                            refs: List.of(new ArtifactRef(
                                     ref: it,
                                     version: null,
                                     providers: null))
@@ -68,15 +70,15 @@ class ArtifactManager {
                     }
                 }
 
-                return new ArtifactYamlDependency(
+                return new ArtifactDependency(
                         name: it.name,
                         refs: it.ref != null ?
-                                List.of(new ArtifactYamlReference(ref: it.ref)) :
+                                List.of(new ArtifactRef(ref: it.ref)) :
                                 (it.refs as List).stream().map { ref ->
                                     if (ref instanceof String)
-                                        return new ArtifactYamlReference(ref: ref)
+                                        return new ArtifactRef(ref: ref)
 
-                                    return new ArtifactYamlReference(
+                                    return new ArtifactRef(
                                             ref: ref.ref,
                                             version: ref.version,
                                             providers: ref.providers)
@@ -86,6 +88,7 @@ class ArtifactManager {
 
             def parsed = yamlMap[module] = new Artifact(
                     name: yamlArtifact.name,
+                    icon: yamlArtifact.icon,
                     version: yamlArtifact.version,
                     description: yamlArtifact.description,
                     tags: yamlArtifact.tags,
