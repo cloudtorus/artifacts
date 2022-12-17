@@ -15,7 +15,6 @@ class ArtifactManager {
     def populateFromDisk() {
         artifacts.clear()
 
-
         @SourceURI
         URI scriptURI
         // noinspection GroovyVariableNotAssigned
