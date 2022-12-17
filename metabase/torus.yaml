@@ -15,6 +15,6 @@ dependencies:
   - primitives/cluster
   - ref: primitives/sql
     name: Metabase's Database
-    requirements:
+    parameters:
       engine: pg
     unique: true

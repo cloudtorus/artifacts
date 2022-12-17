@@ -1,3 +1,5 @@
+import groovyjarjarantlr4.v4.runtime.misc.Nullable
+
 class ArtifactRef {
     String ref
     String version
@@ -8,6 +10,8 @@ class ArtifactRef {
 class ArtifactDependency {
     String name
     List<ArtifactRef> refs
+    @Nullable
+    Map<String, String> parameters
 }
 
 class Artifact {

@@ -41,6 +41,7 @@ def applicationDocuments = manager.artifacts.stream().map {
                         .append('providers', ref.providers)
                         .append('unique', ref.unique)
                 }.toList())
+                .append('parameters', dependency.parameters)
         }.toList())
 }.toList()
 def session = client.startSession()

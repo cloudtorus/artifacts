@@ -53,12 +53,14 @@ class ArtifactManager {
                             refs: List.of(new ArtifactRef(
                                     ref: it,
                                     version: null,
-                                    providers: null))
+                                    providers: null)),
+                            parameters: null,
                     )
                 }
 
                 assert it.name instanceof String, 'dependencies.[].name is required'
                 assert it.ref instanceof String || it.refs instanceof List, 'dependencies.[].refs is required'
+                assert it.parameters == null || it.parameters instanceof Map, 'dependencies[].parameters must be a key-value map'
 
                 if (it.refs != null) {
                     (it.refs as List).each {
@@ -82,7 +84,8 @@ class ArtifactManager {
                                             ref: ref.ref,
                                             version: ref.version,
                                             providers: ref.providers)
-                                }.toList()
+                                }.toList(),
+                        parameters: it.parameters,
                 )
             }.toList()
 
