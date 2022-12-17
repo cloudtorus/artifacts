@@ -30,6 +30,7 @@ def applicationDocuments = manager.artifacts.stream().map {
         .append('tags', it.tags)
         .append('paths', it.paths)
         .append('providers', it.providers)
+        .append('primitive', it.ref.startsWith('primitives/'))
         .append('dependencies', it.dependencies.stream().map { dependency ->
             new Document()
                 .append('name', dependency.name)
