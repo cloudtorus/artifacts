@@ -34,7 +34,7 @@ def applicationDocuments = manager.artifacts.stream().map {
         .append('dependencies', it.dependencies.stream().map { dependency ->
             new Document()
                 .append('name', dependency.name)
-                .append('ref', dependency.refs.stream().map { ref ->
+                .append('refs', dependency.refs.stream().map { ref ->
                     new Document()
                         .append('ref', ref.ref)
                         .append('version', ref.version)

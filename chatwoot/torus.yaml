@@ -10,6 +10,8 @@ paths:
   - terraform/helm/**
 providers:
   - digitalocean
+  - google
 dependencies:
   - primitives/cluster
   - primitives/sql
+  - redis
