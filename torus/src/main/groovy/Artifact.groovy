@@ -3,13 +3,14 @@ import groovyjarjarantlr4.v4.runtime.misc.Nullable
 class ArtifactRef {
     String ref
     String version
-    List<String> providers
-    boolean unique
 }
 
 class ArtifactDependency {
     String name
     List<ArtifactRef> refs
+    boolean unique
+    @Nullable
+    List<String> providers // providers for which this dependency is applicable
     @Nullable
     Map<String, String> parameters
 }
