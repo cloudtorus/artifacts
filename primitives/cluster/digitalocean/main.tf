@@ -1,7 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "main" {
   name = "${var.installation}-k8s-cluster"
   region = var.region
-  version = "1.26.0"
+  version = "1.25.4-do.0"
 
   node_pool {
     name = "${var.installation}-k8s-node-pool"
