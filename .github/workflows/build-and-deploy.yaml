@@ -23,16 +23,14 @@ jobs:
             helm package $(dirname $chart);                                                         \
           done
         shell: bash
-      - name: Set AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      - run: |
+      - name: Copy Helm charts to charts.cloudtorus.com
+        run: |
           for pkg in $(find . -type f -path  '^.*\/helm\/[^/]*\/[^/]*\.tgz$');                      \
           do                                                                                        \
             aws s3 cp $pkg s3://charts.cloudtorus                                                   \
               --endpoint=https://nyc3.digitaloceanspaces.com;                                       \
           done
         shell: bash
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
