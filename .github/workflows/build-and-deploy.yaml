@@ -23,6 +23,7 @@ jobs:
           do                                                                                        \
             helm package $(dirname chart)                                                           \
           done
+        shell: bash
       - name: Set AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
@@ -34,3 +35,4 @@ jobs:
             aws s3 cp pkg s3://charts.cloudtorus                                                    \
               --endpoint=https://nyc3.digitaloceanspaces.com                                        \
           done
+        shell: bash
