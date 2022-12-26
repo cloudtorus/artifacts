@@ -1,11 +1,12 @@
-name: helm-repository
-run-name: Helm Repository
+name: build-and-deploy
+run-name: Build & Deploy
 on:
   push:
     branches:
       - master
 jobs:
-  package:
+  helm-repository:
+    name: Helm Repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,7 +14,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
         with:
-          version: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
         id: install
       - name: Package Helm charts
         run: |
