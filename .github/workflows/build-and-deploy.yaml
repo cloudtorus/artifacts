@@ -16,10 +16,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
         id: install
-      - run: find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$'
       - name: Package Helm charts
         run: |
-          for chart in $(find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$')                    \
+          for chart in $(find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$');                   \
           do                                                                                        \
             helm package $(dirname chart)                                                           \
           done
@@ -30,7 +29,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: |
-          for pkg in $(find . -type f -path  '^.*\/helm\/[^/]*\/[^/]*\.tgz$')                       \
+          for pkg in $(find . -type f -path  '^.*\/helm\/[^/]*\/[^/]*\.tgz$');                      \
           do                                                                                        \
             aws s3 cp pkg s3://charts.cloudtorus                                                    \
               --endpoint=https://nyc3.digitaloceanspaces.com                                        \
