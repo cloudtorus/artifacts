@@ -20,7 +20,7 @@ jobs:
         run: |
           for chart in $(find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$');                   \
           do                                                                                        \
-            helm package $(dirname chart)                                                           \
+            helm package $(dirname chart);                                                          \
           done
         shell: bash
       - name: Set AWS credentials
