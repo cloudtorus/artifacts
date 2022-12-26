@@ -20,6 +20,7 @@ jobs:
         run: |
           for chart in $(find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$');                   \
           do                                                                                        \
+            echo $(chart);                                                                          \
             helm package $(dirname chart);                                                          \
           done
         shell: bash
@@ -32,6 +33,6 @@ jobs:
           for pkg in $(find . -type f -path  '^.*\/helm\/[^/]*\/[^/]*\.tgz$');                      \
           do                                                                                        \
             aws s3 cp pkg s3://charts.cloudtorus                                                    \
-              --endpoint=https://nyc3.digitaloceanspaces.com                                        \
+              --endpoint=https://nyc3.digitaloceanspaces.com;                                       \
           done
         shell: bash
