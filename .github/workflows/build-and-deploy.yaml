@@ -18,19 +18,15 @@ jobs:
         id: install
       - name: Package Helm charts
         run: |
+          mkdir .charts;                                                                            \
           for chart in $(find . -type f -regex '^.*\/helm\/[^/]*\/Chart\.yaml$');                   \
           do                                                                                        \
-            helm package $(dirname $chart);                                                         \
+            helm package $(dirname $chart) -d ./.charts;                                            \
           done
         shell: bash
       - name: Copy Helm charts to charts.cloudtorus.com
         run: |
-          for pkg in $(find . -type f -path  '^.*\/helm\/[^/]*\/[^/]*\.tgz$');                      \
-          do                                                                                        \
-            aws s3 cp $pkg s3://charts.cloudtorus                                                   \
-              --endpoint=https://nyc3.digitaloceanspaces.com;                                       \
-          done
-        shell: bash
+          aws s3 sync .charts s3://charts.cloudtorus --endpoint=https://nyc3.digitaloceanspaces.com \
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
