@@ -60,7 +60,7 @@ class ArtifactManager {
 
                 assert it.name instanceof String, 'dependencies.[].name is required'
                 assert it.ref instanceof String || it.refs instanceof List, 'dependencies.[].refs is required'
-                assert it.parameters == null || it.parameters instanceof Map, 'dependencies[].parameters must be a key-value map'
+                assert it.constraints == null || it.constraints instanceof Map, 'dependencies[].constraints must be a key-value map'
                 assert it.providers == null || it.providers instanceof List, 'dependencies.[].providers must be a list'
 
                 if (it.refs != null) {
@@ -84,7 +84,7 @@ class ArtifactManager {
                                             ref: ref.ref,
                                             version: ref.version)
                                 }.toList(),
-                        constraints: it.parameters,
+                        constraints: it.constraints,
                         providers: it.providers
                 )
             }.toList()

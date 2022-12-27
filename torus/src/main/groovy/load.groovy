@@ -39,7 +39,7 @@ def applicationDocuments = manager.artifacts.stream().map {
                         .append('ref', ref.ref)
                         .append('version', ref.version)
                 }.toList())
-                .append('parameters', dependency.parameters)
+                .append('constraints', dependency.constraints)
                 .append('providers', dependency.providers)
         }.toList())
 }.toList()
