@@ -1,0 +1,10 @@
+version: v1
+name: (internal) Cloud Storage Bucket
+description: Create a Cloud Storage bucket to store Terraform state
+tags:
+  - Primitive
+paths:
+  - '{{provider}}/**'
+providers:
+  - google
+  - digitalocean
