@@ -12,7 +12,7 @@ class ArtifactDependency {
     @Nullable
     List<String> providers // providers for which this dependency is applicable
     @Nullable
-    Map<String, String> parameters
+    Map<String, String> constraints
 }
 
 class Artifact {

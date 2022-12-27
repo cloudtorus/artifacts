@@ -17,6 +17,6 @@ dependencies:
   - name: Postgres Database
     refs:
       - primitives/sql
-    parameters:
+    constraints:
       engine: pg
     unique: true

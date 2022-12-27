@@ -53,7 +53,7 @@ class ArtifactManager {
                             refs: List.of(new ArtifactRef(
                                     ref: it,
                                     version: null)),
-                            parameters: null,
+                            constraints: null,
                             providers: null,
                     )
                 }
@@ -84,7 +84,7 @@ class ArtifactManager {
                                             ref: ref.ref,
                                             version: ref.version)
                                 }.toList(),
-                        parameters: it.parameters,
+                        constraints: it.parameters,
                         providers: it.providers
                 )
             }.toList()
