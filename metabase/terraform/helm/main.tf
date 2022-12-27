@@ -1,7 +1,7 @@
 resource "helm_release" "app" {
   chart = "${path.module}/../../helm/metabase"
   name  = "metabase"
-
+  timeout = 600
   values = [
     file("${path.module}/../../helm/metabase/values.yaml")
   ]

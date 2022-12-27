@@ -7,7 +7,7 @@ resource "random_password" "redis" {
 resource "helm_release" "app" {
   chart = "${path.module}/../../helm/redis"
   name = "redis"
-
+  timeout = 600
   values = [
     file("${path.module}/../../helm/redis/values.yaml")
   ]

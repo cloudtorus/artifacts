@@ -6,6 +6,7 @@ resource "random_password" "secret_key" {
 resource "helm_release" "chatwoot" {
   chart = "${path.module}/../../helm/chatwoot"
   name  = "chatwoot"
+  timeout = 600
   version = "2.10.0"
 
   set {
