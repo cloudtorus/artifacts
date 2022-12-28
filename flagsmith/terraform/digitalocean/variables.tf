@@ -1,3 +1,12 @@
+variable "context" {
+  type = object({
+    id = string
+    project = string
+    region = string
+    token = string
+  })
+}
+
 variable "dependencies" {
   type = object({
     cluster = object({
@@ -8,14 +17,5 @@ variable "dependencies" {
       uri = string
       ca = string
     })
-  })
-}
-
-variable "context" {
-  type = object({
-    id = string
-    project = string
-    region = string
-    token = string
   })
 }
