@@ -20,7 +20,3 @@ dependencies:
     constraints:
       engine: pg
     unique: true
-spec:
-  postgresql:
-    connection_uri:
-      type: string
