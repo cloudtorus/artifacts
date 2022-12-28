@@ -1,19 +1,10 @@
-data "terraform_remote_state" "vpc" {
-  backend = "gcs"
-  config = {
-    bucket = var.backend_bucket
-    prefix = "terraform/primitives/vpc"
-    credentials = var.credentials
-  }
-}
-
 resource "google_container_cluster" "main" {
-  name = "${var.installation}-torus-cluster"
-  location = var.region
+  name = "${var.context.id}-torus-cluster"
+  location = var.context.region
   remove_default_node_pool = true
   initial_node_count = 1
-  network = data.terraform_remote_state.vpc.outputs.vpc_name
-  subnetwork = data.terraform_remote_state.vpc.outputs.subnet_name
+  network = var.dependencies.vpc.vpc_id
+  subnetwork = var.dependencies.vpc.subnet_name
 
   ip_allocation_policy {
     cluster_secondary_range_name = ""
@@ -23,7 +14,7 @@ resource "google_container_cluster" "main" {
 
 resource "google_container_node_pool" "main" {
   name = google_container_cluster.main.name
-  location = var.region
+  location = var.context.region
   cluster = google_container_cluster.main.name
   node_count = 1
 
@@ -34,11 +25,11 @@ resource "google_container_node_pool" "main" {
     ]
 
     labels = {
-      env = var.project
+      env = var.context.project
     }
 
     machine_type = "n1-standard-1"
-    tags = ["gke-node", "${var.installation}-gke"]
+    tags = ["gke-node", "${var.context.id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }

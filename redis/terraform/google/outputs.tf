@@ -1,16 +1,9 @@
-output "master" {
-  value = module.deployment.master
-}
-
-output "host" {
-  value = module.deployment.host
-}
-
-output "port" {
-  value = 6379
-}
-
-output "password" {
-  value = module.deployment.password
+output "all" {
   sensitive = true
+  value = {
+    master = module.deployment.master
+    host = module.deployment.host
+    port = 6379
+    password = module.deployment.password
+  }
 }

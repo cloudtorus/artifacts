@@ -1,27 +1,18 @@
-variable "installation" {
-  description = "Installation id"
-  type = string
+variable "context" {
+  type = object({
+    id = string
+    project = string
+    credentials = string
+    region = string
+  })
 }
 
-variable "project" {
-  description = "Project in Google Cloud for deployment"
-  type = string
-}
-
-variable "credentials" {
-  description = "Google Cloud service account"
-  type = string
-}
-
-variable "region" {
-  description = "Region for deployment"
-  default = "us-central1"
-  type = string
-}
-
-variable "backend_bucket" {
-  description = "Terraform state bucket"
-  type = string
+variable "dependencies" {
+  type = object({
+    vpc = object({
+      vpc_id = string
+    })
+  })
 }
 
 variable "engine" {
@@ -29,3 +20,4 @@ variable "engine" {
   default = "pg"
   type = string
 }
+

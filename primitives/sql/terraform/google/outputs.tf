@@ -1,34 +1,13 @@
-output "id" {
-  value = google_sql_database_instance.main.id
-}
-
-output "user" {
-  value = google_sql_user.main.name
-}
-
-output "password" {
-  value = google_sql_user.main.password
+output "all" {
   sensitive = true
-}
-
-output "host" {
-  value = google_sql_database_instance.main.private_ip_address
-}
-
-output "port" {
-  value = var.engine == "pg" ? 5432 : 3306
-}
-
-output "name" {
-  value = google_sql_database.main.name
-}
-
-output "uri" {
-  value = "${var.engine == "pg" ? "postgres" : "mysql"}://${google_sql_user.main.name}:${google_sql_user.main.password}@${google_sql_database_instance.main.private_ip_address}/${google_sql_database.main.name}"
-  sensitive = true
-}
-
-output "ca" {
-  value = google_sql_database_instance.main.server_ca_cert.0.cert
-  sensitive = true
+  value = {
+    id = google_sql_database_instance.main.id
+    user = google_sql_user.main.name
+    password = google_sql_user.main.password
+    host = google_sql_database_instance.main.private_ip_address
+    port = var.engine == "pg" ? 5432 : 3306
+    name = google_sql_database.main.name
+    uri = "${var.engine == "pg" ? "postgres" : "mysql"}://${google_sql_user.main.name}:${google_sql_user.main.password}@${google_sql_database_instance.main.private_ip_address}/${google_sql_database.main.name}"
+    ca = google_sql_database_instance.main.server_ca_cert.0.cert
+  }
 }
