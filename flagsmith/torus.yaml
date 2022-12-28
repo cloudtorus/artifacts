@@ -12,11 +12,19 @@ providers:
   - google
   - digitalocean
 dependencies:
-  - name: Kubernetes Cluster
+  - name: cluster
     ref: primitives/cluster
-  - name: Postgres Database
+  - name: database
     refs:
       - primitives/sql
     constraints:
       engine: pg
     unique: true
+traits:
+  terraform:
+    path: 'terraform/{{provider}}'
+  helm: { }
+spec:
+  postgresql:
+    connection_uri:
+      type: string

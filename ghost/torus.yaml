@@ -12,8 +12,9 @@ providers:
   - google
   - digitalocean
 dependencies:
-  - primitives/cluster
-  - name: Database
+  - name: cluster
+    ref: primitives/cluster
+  - name: database
     ref: primitives/sql
     constraints:
       engine: mysql

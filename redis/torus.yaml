@@ -13,4 +13,5 @@ providers:
   - digitalocean
   - google
 dependencies:
-  - primitives/cluster
+  - name: cluster
+    ref: primitives/cluster

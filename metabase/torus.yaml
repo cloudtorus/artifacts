@@ -12,9 +12,10 @@ providers:
   - google
   - digitalocean
 dependencies:
-  - primitives/cluster
+  - name: cluster
+    ref: primitives/cluster
   - ref: primitives/sql
-    name: Metabase's Database
+    name: database
     constraints:
       engine: pg
     unique: true

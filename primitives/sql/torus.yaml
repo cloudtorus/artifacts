@@ -10,7 +10,9 @@ providers:
   - google
   - digitalocean
 dependencies:
-  - name: VPC Network
+  - name: vpc
     ref: primitives/vpc
     providers:
       - google
+spec:
+  engine: pg

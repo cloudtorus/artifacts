@@ -12,6 +12,8 @@ providers:
   - digitalocean
   - google
 dependencies:
-  - primitives/cluster
-  - primitives/sql
+  - name: cluster
+    ref: primitives/cluster
+  - name: database
+    ref: primitives/sql
   - redis
