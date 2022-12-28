@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "digitalocean" {
-  token = var.token
+  token = var.context.token
   spaces_access_id = var.backend.access_key
   spaces_secret_key = var.backend.secret_key
 }
