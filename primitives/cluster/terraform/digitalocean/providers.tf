@@ -5,7 +5,3 @@ terraform {
     }
   }
 }
-
-provider "digitalocean" {
-  token = var.token
-}
