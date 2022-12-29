@@ -14,5 +14,4 @@ module "deployment" {
   source = "../helm"
   database_uri = var.dependencies.database.uri
   database_ca =  var.dependencies.database.ca
-  helm_release = var.helm_release
 }

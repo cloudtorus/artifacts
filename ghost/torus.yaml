@@ -4,10 +4,6 @@ icon: https://cdn.cloudtorus.com/static/logos/artifacts/ghost.png
 description: Turn your audience into a business.
 tags:
   - Open Source
-paths:
-  - helm/**
-  - 'terraform/{{provider}}/**'
-  - terraform/helm/**
 providers:
   - google
   - digitalocean
@@ -15,7 +11,4 @@ dependencies:
   - name: cluster
     ref: primitives/cluster
   - name: database
-    ref: primitives/sql
-    constraints:
-      engine: mysql
-    unique: true
+    ref: primitives/mysql

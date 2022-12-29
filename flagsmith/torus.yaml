@@ -4,10 +4,6 @@ icon: https://cdn.cloudtorus.com/static/logos/artifacts/flagsmith.svg
 description: An open-source feature flag and remote configuration service
 tags:
   - SaaS
-paths:
-  - helm/**
-  - 'terraform/{{provider}}/**'
-  - terraform/helm/**
 providers:
   - google
   - digitalocean
@@ -15,8 +11,4 @@ dependencies:
   - name: cluster
     ref: primitives/cluster
   - name: database
-    refs:
-      - primitives/sql
-    constraints:
-      engine: pg
-    unique: true
+    ref: primitives/postgres

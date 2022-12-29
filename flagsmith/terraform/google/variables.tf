@@ -19,10 +19,3 @@ variable "dependencies" {
     })
   })
 }
-
-variable "helm_release" {
-  type = object({
-    chart = string
-    values = string
-  })
-}

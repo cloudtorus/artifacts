@@ -4,10 +4,6 @@ icon: https://cdn.cloudtorus.com/static/logos/artifacts/chatwoot.svg
 description: Chatwoot gives you all the tools to manage conversations, build relationships and delight your customers from one place.
 tags:
   - SaaS
-paths:
-  - helm/**
-  - 'terraform/{{provider}}/**'
-  - terraform/helm/**
 providers:
   - digitalocean
   - google
@@ -15,5 +11,8 @@ dependencies:
   - name: cluster
     ref: primitives/cluster
   - name: database
-    ref: primitives/sql
-  - redis
+    refs:
+      - primitives/postgres
+      - primitives/mysql
+  - name: redis
+    ref: redis

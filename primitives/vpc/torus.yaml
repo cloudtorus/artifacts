@@ -2,7 +2,5 @@ version: v1
 name: VPC network
 tags:
   - Primitive
-paths:
-  - '{{provider}}/**'
 providers:
   - google

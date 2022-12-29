@@ -4,8 +4,6 @@ description: A free and open-source relational database management system that e
 tags:
   - Data
   - Primitive
-paths:
-  - '{{provider}}/**'
 providers:
   - google
   - digitalocean

@@ -4,18 +4,11 @@ icon: https://cdn.cloudtorus.com/static/logos/artifacts/metabase.svg
 description: Business Intelligence For Everyone
 tags:
   - SaaS
-paths:
-  - helm/**
-  - 'terraform/{{provider}}/**'
-  - terraform/helm/**
 providers:
   - google
   - digitalocean
 dependencies:
   - name: cluster
     ref: primitives/cluster
-  - ref: primitives/sql
-    name: database
-    constraints:
-      engine: pg
-    unique: true
+  - name: database
+    ref: primitives/postgres

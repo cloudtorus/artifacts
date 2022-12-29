@@ -3,8 +3,6 @@ name: Managed Kubernetes Cluster
 description: Kubernetes cluster managed by your cloud provider
 tags:
   - Primitive
-paths:
-  - '{{provider}}/**'
 providers:
   - google
   - digitalocean
