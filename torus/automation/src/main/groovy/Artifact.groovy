@@ -21,7 +21,6 @@ class Artifact {
     String icon
     String description
     List<String> tags
-    List<String> paths
     List<String> providers
     List<ArtifactDependency> dependencies
 

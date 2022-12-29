@@ -1,18 +1,16 @@
-output "master" {
-  value = {
-    host = data.kubernetes_service.master.spec.0.cluster_ip
-  }
+variable "recipe" {
+  type = any
+  default = {}
 }
 
-output "host" {
-  value = data.kubernetes_service.master.spec.0.cluster_ip
-}
-
-output "port" {
-  value = 6379
-}
-
-output "password" {
-  value = random_password.redis.result
+output "all" {
   sensitive = true
+  value = {
+    master = {
+      host = data.kubernetes_service.master.spec.0.cluster_ip
+    }
+    host = data.kubernetes_service.master.spec.0.cluster_ip
+    port = 6379
+    password = data.kubernetes_secret.redis-password.data.password
+  }
 }

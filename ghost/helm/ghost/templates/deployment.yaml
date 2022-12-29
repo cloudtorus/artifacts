@@ -31,15 +31,15 @@ spec:
             - name: database__client
               value: mysql
             - name: database__connection__host
-              value: {{ required "database.host is required" .Values.database.host }}
+              value: {{ required "database.host is required" .Values.global.dependencies.database.host }}
             - name: database__connection__port
-              value: "{{ required "database.port is required" .Values.database.port }}"
+              value: "{{ required "database.port is required" .Values.global.dependencies.database.port }}"
             - name: database__connection__user
-              value: {{ required "database.user is required" .Values.database.user }}
+              value: {{ required "database.user is required" .Values.global.dependencies.database.user }}
             - name: database__connection__password
-              value: {{ required "database.password is required" .Values.database.password }}
+              value: {{ required "database.password is required" .Values.global.dependencies.database.password }}
             - name: database__connection__database
-              value: {{ required "database.name is required" .Values.database.name }}
+              value: {{ required "database.name is required" .Values.global.dependencies.database.name }}
             - name: database__ssl__ca
               value: |
-{{ required "database.ssl.ca is required" .Values.database.ssl.ca | indent 16 }}
+{{ required "database.ssl.ca is required" .Values.global.dependencies.database.ssl.ca | indent 16 }}

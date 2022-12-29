@@ -1,9 +1,12 @@
+global:
+  dependencies:
+    database:
+      user: ""
+      password: ""
+      host: ""
+      port: ""
+      name: ""
+      ssl:
+        ca: ""
+
 environment: production
-database:
-  user: ""
-  password: ""
-  host: ""
-  port: ""
-  name: ""
-  ssl:
-    ca: ""

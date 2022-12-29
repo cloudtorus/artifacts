@@ -1,16 +1,18 @@
-database:
-  user: ""
-  password: ""
-  host: ""
-  port: ""
-  name: ""
-  ssl:
-    ca: ""
+global:
+  dependencies:
+    database:
+      user: ""
+      password: ""
+      host: ""
+      port: ""
+      name: ""
+      ssl:
+        ca: ""
 
-redis:
-  host: ""
-  port: ""
-  password: ""
+    redis:
+      host: ""
+      port: ""
+      password: ""
 
 env:
   ACTIVE_STORAGE_SERVICE: local

@@ -28,7 +28,6 @@ def applicationDocuments = manager.artifacts.stream().map {
         .append('repository', 'https://github.com/cloudtorus/artifacts')
         .append('description', it.description)
         .append('tags', it.tags)
-        .append('paths', it.paths)
         .append('providers', it.providers)
         .append('primitive', it.ref.startsWith('primitives/'))
         .append('dependencies', it.dependencies.stream().map { dependency ->

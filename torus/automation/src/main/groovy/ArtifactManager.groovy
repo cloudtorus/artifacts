@@ -40,7 +40,6 @@ class ArtifactManager {
             assert yamlArtifact.icon == null || yamlArtifact.icon instanceof String, 'icon must be a string'
             assert yamlArtifact.description  == null || yamlArtifact.description instanceof String, 'description must be a string'
             assert yamlArtifact.tags instanceof List, 'tags is required'
-            assert yamlArtifact.paths instanceof List, 'paths is required'
             assert yamlArtifact.providers instanceof List, 'providers is required'
             assert yamlArtifact.dependencies instanceof List, 'dependencies is optional'
 
@@ -95,7 +94,6 @@ class ArtifactManager {
                     version: yamlArtifact.version,
                     description: yamlArtifact.description,
                     tags: yamlArtifact.tags,
-                    paths: yamlArtifact.paths,
                     providers: yamlArtifact.providers,
                     dependencies: yamlArtifact.dependencies,
 

@@ -1,9 +1,5 @@
-output "host" {
-  value = module.deployment.host
-}
-
-output "all" {
+output "env" {
   value = {
-    host = module.deployment.host
+    SECRET_KEY = random_password.secret_key.result
   }
 }

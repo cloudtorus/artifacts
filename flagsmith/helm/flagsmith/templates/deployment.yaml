@@ -26,7 +26,7 @@ spec:
             - name: DISABLE_INFLUXDB_FEATURES
               value: "true"
             - name: DATABASE_URL
-              value: {{ required "A value .Values.postgresql.connection_uri entry required!" .Values.postgresql.connection_uri }}
+              value: {{ required "A value .Values.global.dependencies.database.uri entry required!" .Values.global.dependencies.database.uri }}
             - name: PGSSLMODE
               value: "require"
           resources:
@@ -36,7 +36,7 @@ spec:
             requests:
               cpu: 250m
               memory: 50Mi
-{{ if .Values.postgresql.connection_ca }}
+{{ if .Values.global.dependencies.database.ssl.ca }}
           volumeMounts:
             - name: postgresql-ca
               mountPath: /etc/ssl/certs/postgresql_ca.pem

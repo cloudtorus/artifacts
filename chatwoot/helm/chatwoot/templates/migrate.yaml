@@ -28,18 +28,18 @@ spec:
                 name: secrets
           env:
             - name: POSTGRES_HOST
-              value: {{ required "database.host is required" .Values.database.host | quote }}
+              value: {{ required "database.host is required" .Values.global.dependencies.database.host | quote }}
             - name: POSTGRES_PORT
-              value: {{ required "database.port is required" .Values.database.port | quote }}
+              value: {{ required "database.port is required" .Values.global.dependencies.database.port | quote }}
             - name: POSTGRES_USERNAME
-              value: {{ required "database.user is required" .Values.database.user | quote }}
+              value: {{ required "database.user is required" .Values.global.dependencies.database.user | quote }}
             - name: POSTGRES_DATABASE
-              value: {{ required "database.name is required" .Values.database.name | quote }}
+              value: {{ required "database.name is required" .Values.global.dependencies.database.name | quote }}
             - name: REDIS_HOST
-              value: {{ required "redis.host is required" .Values.redis.host | quote }}
+              value: {{ required "redis.host is required" .Values.global.dependencies.redis.host | quote }}
             - name: REDIS_PORT
-              value: {{ required "redis.port is required" .Values.redis.port | quote }}
-{{ if .Values.database.ssl.ca }}
+              value: {{ required "redis.port is required" .Values.global.dependencies.redis.port | quote }}
+{{ if .Values.global.dependencies.database.ssl.ca }}
             - name: PGSSLMODE
               value: "require"
           volumeMounts:

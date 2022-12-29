@@ -1,4 +1,5 @@
 redis:
   auth:
     enabled: true
-    password: "" # passed in from Terraform
+    existingSecret: redis-password
+    existingSecretPasswordKey: password

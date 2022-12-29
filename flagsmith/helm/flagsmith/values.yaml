@@ -1,4 +1,8 @@
+global:
+  dependencies:
+    database:
+      uri: ""
+      ssl:
+        ca: ""
+
 environment: prod
-postgresql:
-  connection_uri: ""
-  connection_ca: ""

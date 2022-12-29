@@ -23,16 +23,16 @@ spec:
             - name: MB_DB_TYPE
               value: postgres
             - name: MB_DB_DBNAME
-              value: {{ required "database.name is required" .Values.database.name }}
+              value: {{ required "database.name is required" .Values.global.dependencies.database.name }}
             - name: MB_DB_PORT
-              value: "{{ required "database.port is required" .Values.database.port }}"
+              value: "{{ required "database.port is required" .Values.global.dependencies.database.port }}"
             - name: MB_DB_USER
-              value: {{ required "database.user is required" .Values.database.user }}
+              value: {{ required "database.user is required" .Values.global.dependencies.database.user }}
             - name: MB_DB_PASS
-              value: {{ required "database.password is required" .Values.database.password }}
+              value: {{ required "database.password is required" .Values.global.dependencies.database.password }}
             - name: MB_DB_HOST
-              value: {{ required "database.host is required" .Values.database.host }}
-{{ if .Values.database.ssl.ca }}
+              value: {{ required "database.host is required" .Values.global.dependencies.database.host }}
+{{ if .Values.global.dependencies.database.ssl.ca }}
             - name: PGSSLMODE
               value: "require"
           volumeMounts:

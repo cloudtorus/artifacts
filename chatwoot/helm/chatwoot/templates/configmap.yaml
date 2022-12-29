@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-{{ if .Values.database.ssl.ca }}
+{{ if .Values.global.dependencies.database.ssl.ca }}
   database-ssl-ca: |-
-{{ .Values.database.ssl.ca | indent 4 }}
+{{ .Values.global.dependencies.database.ssl.ca | indent 4 }}
 {{ end }}
