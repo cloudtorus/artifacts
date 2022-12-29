@@ -1,4 +1,4 @@
-version: v1
+version: 1.0.0
 name: Managed Kubernetes Cluster
 description: Kubernetes cluster managed by your cloud provider
 tags:

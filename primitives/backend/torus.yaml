@@ -1,4 +1,4 @@
-version: v1
+version: 1.0.0
 name: (internal) Cloud Storage Bucket
 description: Create a Cloud Storage bucket to store Terraform state
 tags:

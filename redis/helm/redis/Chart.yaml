@@ -2,7 +2,7 @@ apiVersion: v2
 name: redis
 description: Remote Dictionary Server
 type: application
-version: 6.2.4
+version: 1.0.0
 appVersion: 6.2.4
 dependencies:
   - name: redis

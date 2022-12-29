@@ -2,4 +2,4 @@ apiVersion: v2
 name: chatwoot
 description: Chatwoot gives you all the tools to manage conversations, build relationships and delight your customers from one place
 type: application
-version: 2.10.0
+version: 1.0.0

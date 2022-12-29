@@ -1,4 +1,4 @@
-version: v1
+version: 1.0.0
 name: VPC network
 tags:
   - Primitive
