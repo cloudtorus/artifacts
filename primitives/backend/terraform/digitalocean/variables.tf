@@ -1,6 +1,6 @@
 variable "backend" {
   type = object({
-    bucket = string,
+    bucket     = string,
     access_key = string,
     secret_key = string,
   })
@@ -8,9 +8,9 @@ variable "backend" {
 
 variable "context" {
   type = object({
-    id = string
+    id      = string
     project = string
-    region = string
-    token = string
+    region  = string
+    token   = string
   })
 }

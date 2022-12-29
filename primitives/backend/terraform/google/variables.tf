@@ -1,6 +1,6 @@
 variable "google_apis" {
   description = "Services to enable"
-  type = list(string)
+  type        = list(string)
   default = [
     "compute.googleapis.com",
     "container.googleapis.com",
@@ -17,9 +17,9 @@ variable "backend" {
 
 variable "context" {
   type = object({
-    id = string
-    project = string
+    id          = string
+    project     = string
     credentials = string
-    region = string
+    region      = string
   })
 }

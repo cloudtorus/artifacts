@@ -1,21 +1,21 @@
 resource "google_container_cluster" "main" {
-  name = "${var.context.id}-cluster"
-  location = var.context.region
+  name                     = "${var.context.id}-cluster"
+  location                 = var.context.region
   remove_default_node_pool = true
-  initial_node_count = 1
-  network = var.dependencies.vpc.vpc_id
-  subnetwork = var.dependencies.vpc.subnet_name
+  initial_node_count       = 1
+  network                  = var.dependencies.vpc.vpc_id
+  subnetwork               = var.dependencies.vpc.subnet_name
 
   ip_allocation_policy {
-    cluster_secondary_range_name = ""
+    cluster_secondary_range_name  = ""
     services_secondary_range_name = ""
   }
 }
 
 resource "google_container_node_pool" "main" {
-  name = google_container_cluster.main.name
-  location = var.context.region
-  cluster = google_container_cluster.main.name
+  name       = google_container_cluster.main.name
+  location   = var.context.region
+  cluster    = google_container_cluster.main.name
   node_count = 1
 
   node_config {
@@ -29,7 +29,7 @@ resource "google_container_node_pool" "main" {
     }
 
     machine_type = "n1-standard-1"
-    tags = ["gke-node", "${var.context.id}-gke"]
+    tags         = ["gke-node", "${var.context.id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }

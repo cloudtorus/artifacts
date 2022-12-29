@@ -1,3 +1,10 @@
+variable "helm" {
+  type = object({
+    chart = string
+    values = list(string)
+  })
+}
+
 variable "context" {
   type = object({
     id = string

@@ -1,14 +1,14 @@
 variable "context" {
   type = object({
-    id = string
+    id      = string
     project = string
-    region = string
-    token = string
+    region  = string
+    token   = string
   })
 }
 
 variable "engine" {
   description = "Database engine to use"
-  type = string
-  default = "pg"
+  type        = string
+  default     = "pg"
 }

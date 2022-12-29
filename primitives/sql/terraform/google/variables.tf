@@ -1,9 +1,9 @@
 variable "context" {
   type = object({
-    id = string
-    project = string
+    id          = string
+    project     = string
     credentials = string
-    region = string
+    region      = string
   })
 }
 
@@ -17,7 +17,7 @@ variable "dependencies" {
 
 variable "engine" {
   description = "Engine - mysql or pg"
-  default = "pg"
-  type = string
+  default     = "pg"
+  type        = string
 }
 
