@@ -1,17 +1,15 @@
 resource "helm_release" "app" {
   name = "flagsmith"
-  chart = "${path.module}/../../helm/flagsmith"
+  chart = var.helm_release.chart
   timeout = 600
-  values = [
-    file("${path.module}/../../helm/flagsmith/values.yaml")
-  ]
+  values = [var.helm_release.values]
 
   set {
-    name = "postgresql.connection_uri"
+    name = "flagsmith.postgresql.connection_uri"
     value = var.database_uri
   }
   set {
-    name  = "postgresql.connection_ca"
+    name  = "flagsmith.postgresql.connection_ca"
     value = var.database_ca
   }
 }

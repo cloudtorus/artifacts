@@ -14,10 +14,3 @@ variable "dependencies" {
     })
   })
 }
-
-variable "engine" {
-  description = "Engine - mysql or pg"
-  default     = "pg"
-  type        = string
-}
-

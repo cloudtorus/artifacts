@@ -16,7 +16,7 @@ resource "google_sql_database_instance" "main" {
   name             = "${var.context.id}-db-instance"
   project          = var.context.project
   region           = var.context.region
-  database_version = var.engine == "pg" ? "POSTGRES_11" : "MYSQL_8"
+  database_version = "MYSQL_8"
   depends_on       = [google_service_networking_connection.db_conn]
 
   settings {

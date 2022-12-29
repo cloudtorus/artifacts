@@ -1,6 +1,6 @@
-version: v1
-name: Managed SQL Database
-description: SQL database managed by your cloud provider
+version: 1.0.0
+name: Managed MySQL
+description: A free and open-source relational database management system that is widely used.
 tags:
   - Data
   - Primitive

@@ -1,6 +1,7 @@
 output "all" {
   sensitive = true
   value = {
+    cluster = digitalocean_database_cluster.main.id
     user     = digitalocean_database_user.app.name
     password = digitalocean_database_user.app.password
     host     = "${var.engine == "pg" ? digitalocean_database_connection_pool.main[0].private_host : digitalocean_database_cluster.main.private_host}"
