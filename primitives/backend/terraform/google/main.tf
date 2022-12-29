@@ -5,6 +5,7 @@ resource "google_project_service" "storage" {
 
 resource "google_storage_bucket" "terraform" {
   name = var.backend.bucket
+  project = var.context.project
   force_destroy = false
   location = "US"
   storage_class = "STANDARD"
