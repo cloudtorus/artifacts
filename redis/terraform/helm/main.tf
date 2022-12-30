@@ -6,6 +6,6 @@ data "kubernetes_service" "master" {
 
 data "kubernetes_secret" "redis-password" {
   metadata {
-    name = "redis-secret"
+    name = "redis-password"
   }
 }
