@@ -1,5 +1,5 @@
 resource "google_compute_global_address" "db_ip" {
-  name          = "${var.context.id}-sql-ip"
+  name          = "torus-${var.context.id}-ip"
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   prefix_length = 24
@@ -13,7 +13,7 @@ resource "google_service_networking_connection" "db_conn" {
 }
 
 resource "google_sql_database_instance" "main" {
-  name             = "${var.context.id}-db-instance"
+  name             = "torus-${var.context.id}"
   project          = var.context.project
   region           = var.context.region
   database_version = "POSTGRES_11"

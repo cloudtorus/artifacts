@@ -1,5 +1,5 @@
 resource "digitalocean_database_cluster" "main" {
-  name       = "${var.context.id}-db-cluster"
+  name       = "torus-${var.context.id}"
   engine     = "pg"
   version    = "11"
   size       = "db-s-1vcpu-1gb"
