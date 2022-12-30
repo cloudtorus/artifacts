@@ -1,5 +1,5 @@
 resource "google_container_cluster" "main" {
-  name                     = "${var.context.id}-cluster"
+  name                     = "torus-${var.context.id}"
   location                 = var.context.region
   remove_default_node_pool = true
   initial_node_count       = 1
