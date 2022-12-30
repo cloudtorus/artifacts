@@ -11,8 +11,6 @@ dependencies:
   - name: cluster
     ref: primitives/cluster
   - name: database
-    refs:
-      - primitives/postgres
-      - primitives/mysql
+    ref: primitives/postgres
   - name: redis
     ref: redis
