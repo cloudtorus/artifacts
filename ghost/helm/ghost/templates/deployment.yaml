@@ -39,7 +39,7 @@ spec:
             - name: database__connection__password
               value: {{ required "database.password is required" .Values.global.dependencies.database.password }}
             - name: database__connection__database
-              value: {{ required "database.name is required" .Values.global.dependencies.database.name }}
+              value: {{ required "context.id is required" .Values.global.context.id }}
             - name: database__ssl__ca
               value: |
 {{ required "database.ssl.ca is required" .Values.global.dependencies.database.ssl.ca | indent 16 }}

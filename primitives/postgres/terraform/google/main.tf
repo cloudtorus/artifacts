@@ -29,11 +29,6 @@ resource "google_sql_database_instance" "main" {
   deletion_protection = false
 }
 
-resource "google_sql_database" "main" {
-  name     = "${var.context.id}-db"
-  instance = google_sql_database_instance.main.name
-}
-
 resource "random_password" "main" {
   length  = 32
   special = false

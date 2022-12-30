@@ -7,11 +7,6 @@ resource "digitalocean_database_cluster" "main" {
   node_count = 1
 }
 
-resource "digitalocean_database_db" "main" {
-  cluster_id = digitalocean_database_cluster.main.id
-  name       = "${var.context.id}-db"
-}
-
 resource "digitalocean_database_user" "app" {
   cluster_id = digitalocean_database_cluster.main.id
   name       = "app"
@@ -19,9 +14,4 @@ resource "digitalocean_database_user" "app" {
 
 data "digitalocean_database_ca" "main" {
   cluster_id = digitalocean_database_cluster.main.id
-}
-
-resource "time_sleep" "wait_30_seconds" {
-  depends_on      = [digitalocean_database_db.main]
-  create_duration = "30s"
 }

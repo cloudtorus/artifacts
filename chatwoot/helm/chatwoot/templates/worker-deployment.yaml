@@ -37,7 +37,7 @@ spec:
             - name: POSTGRES_USERNAME
               value: {{ required "database.user is required" .Values.global.dependencies.database.user | quote }}
             - name: POSTGRES_DATABASE
-              value: {{ required "database.name is required" .Values.global.dependencies.database.name | quote }}
+              value: "{{ required "context.id is required" .Values.global.context.id }}-db"
             - name: REDIS_HOST
               value: {{ required "redis.host is required" .Values.global.dependencies.redis.host | quote }}
             - name: REDIS_PORT

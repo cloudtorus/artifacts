@@ -23,7 +23,7 @@ spec:
             - name: MB_DB_TYPE
               value: postgres
             - name: MB_DB_DBNAME
-              value: {{ required "database.name is required" .Values.global.dependencies.database.name }}
+              value: {{ required "context.id required" .Values.global.context.id }}-db
             - name: MB_DB_PORT
               value: "{{ required "database.port is required" .Values.global.dependencies.database.port }}"
             - name: MB_DB_USER

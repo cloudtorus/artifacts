@@ -1,4 +1,6 @@
 global:
+  context:
+    id: ""
   dependencies:
     database:
       uri: ""
