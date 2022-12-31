@@ -15,5 +15,5 @@ spec:
       - superuser
       - createdb
     flagsmith: [ ]
-  database:
+  databases:
     flagsmith-db: zalando
