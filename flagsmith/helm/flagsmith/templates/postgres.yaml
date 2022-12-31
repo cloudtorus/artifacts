@@ -1,0 +1,19 @@
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: flagsmith-db
+  namespace: {{ .Release.Namespace }}
+spec:
+  numberOfInstances: 1
+  postgresql:
+    version: "13"
+  volume:
+    size: 1Gi
+  teamId: "torus"
+  users:
+    zalando:
+      - superuser
+      - createdb
+    flagsmith: [ ]
+  database:
+    flagsmith-db: zalando

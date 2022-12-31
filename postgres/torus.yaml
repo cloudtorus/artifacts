@@ -1,0 +1,12 @@
+version: 1.0.0
+name: Postgres
+icon: https://cdn.cloudtorus.com/static/logos/artifacts/postgres.svg
+description: CrunchyData's Postgres Operator with Cloudtorus
+tags:
+  - Database
+providers:
+  - digitalocean
+  - google
+dependencies:
+  - name: cluster
+    ref: primitives/cluster

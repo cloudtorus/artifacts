@@ -11,4 +11,4 @@ dependencies:
   - name: cluster
     ref: primitives/cluster
   - name: database
-    ref: primitives/postgres
+    ref: postgres

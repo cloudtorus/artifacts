@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres
+description: Postgres installed using Zalando's Postgres operator
+type: application
+version: 1.0.0
+appVersion: 1.8.2

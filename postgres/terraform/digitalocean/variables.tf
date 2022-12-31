@@ -4,5 +4,11 @@ variable "context" {
     project = string
     region  = string
     token   = string
+    access_key = string
+    secret_key = string
   })
+}
+
+variable "dependencies" {
+  type = any
 }

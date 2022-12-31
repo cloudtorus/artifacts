@@ -2,9 +2,16 @@ global:
   context:
     id: ""
   dependencies:
-    database:
-      uri: ""
-      ssl:
-        ca: ""
+    postgres:
+      pgbackrest_secret: ""
+  provider: ""
 
 environment: prod
+postgresVersion: 14
+
+s3:
+  bucket: ""
+  endpoint: ""
+  region: ""
+gcs:
+  bucket: ""

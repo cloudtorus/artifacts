@@ -26,9 +26,11 @@ spec:
             - name: DISABLE_INFLUXDB_FEATURES
               value: "true"
             - name: DATABASE_URL
-              value: "{{ required "database.uri is required" .Values.global.dependencies.database.uri }}/{{ required "context.id is required" .Values.global.context.id }}-db"
-            - name: PGSSLMODE
-              value: "require"
+              valueFrom:
+                secretKeyRef:
+                  name: flagsmith.torus.credentials.postgresql.acid.zalan.do
+                  key: uri
+
           resources:
             limits:
               cpu: "0.5"
@@ -36,17 +38,3 @@ spec:
             requests:
               cpu: 250m
               memory: 50Mi
-{{ if .Values.global.dependencies.database.ssl.ca }}
-          volumeMounts:
-            - name: postgresql-ca
-              mountPath: /etc/ssl/certs/postgresql_ca.pem
-              subPath: postgresql_ca.pem
-              readOnly: false
-      volumes:
-        - name: postgresql-ca
-          configMap:
-            name: config
-            items:
-              - key: postgresql_ca
-                path: postgresql_ca.pem
-{{ end }}

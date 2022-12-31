@@ -8,9 +8,5 @@ variable "context" {
 }
 
 variable "dependencies" {
-  type = object({
-    vpc = object({
-      vpc_id = string
-    })
-  })
+  type = any
 }

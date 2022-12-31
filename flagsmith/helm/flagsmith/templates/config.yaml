@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config
-data:
-{{ if .Values.global.dependencies.database.connection_ca }}
-  postgresql_ca: |-
-{{ .Values.global.dependencies.database.connection_ca | indent 4 }}
-{{ end }}
