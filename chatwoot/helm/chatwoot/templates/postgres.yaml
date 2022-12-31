@@ -1,0 +1,18 @@
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: torus-chatwoot
+  namespace: {{ .Release.Namespace }}
+spec:
+  numberOfInstances: 1
+  postgresql:
+    version: "13"
+  volume:
+    size: 1Gi
+  teamId: "torus"
+  users:
+    chatwoot:
+      - superuser
+      - createdb
+    databases:
+      chatwoot: chatwoot

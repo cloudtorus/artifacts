@@ -38,30 +38,19 @@ spec:
                 name: secrets
           env:
             - name: POSTGRES_HOST
-              value: {{ required "database.host is required" .Values.global.dependencies.database.host | quote }}
+              value: torus-chatwoot
             - name: POSTGRES_PORT
-              value: {{ required "database.port is required" .Values.global.dependencies.database.port | quote }}
+              value: "5432"
             - name: POSTGRES_USERNAME
-              value: {{ required "database.user is required" .Values.global.dependencies.database.user | quote }}
+              value: chatwoot
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chatwoot.torus-chatwoot.credentials.postgresql.acid.zalan.do
+                  key: password
             - name: POSTGRES_DATABASE
-              value: "{{ required "context.id is required" .Values.global.context.id }}-db"
+              value: chatwoot
             - name: REDIS_HOST
               value: {{ required "redis.host is required" .Values.global.dependencies.redis.host | quote }}
             - name: REDIS_PORT
               value: {{ required "redis.port is required" .Values.global.dependencies.redis.port | quote }}
-{{ if .Values.global.dependencies.database.ssl.ca }}
-            - name: PGSSLMODE
-              value: "require"
-          volumeMounts:
-            - name: database-ssl-ca
-              mountPath: /etc/ssl/certs/database-ssl-ca.pem
-              subPath: database-ssl-ca.pem
-              readOnly: false
-      volumes:
-        - name: database-ssl-ca
-          configMap:
-            name: config
-            items:
-              - key: database-ssl-ca
-                path: database-ssl-ca.pem
-{{end}}

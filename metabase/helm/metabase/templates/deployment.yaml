@@ -23,28 +23,15 @@ spec:
             - name: MB_DB_TYPE
               value: postgres
             - name: MB_DB_DBNAME
-              value: {{ required "context.id required" .Values.global.context.id }}-db
+              value: metabase
             - name: MB_DB_PORT
-              value: "{{ required "database.port is required" .Values.global.dependencies.database.port }}"
+              value: "5432"
             - name: MB_DB_USER
-              value: {{ required "database.user is required" .Values.global.dependencies.database.user }}
+              value: "metabase"
             - name: MB_DB_PASS
-              value: {{ required "database.password is required" .Values.global.dependencies.database.password }}
+              valueFrom:
+                secretKeyRef:
+                  name: metabase.torus-metabase.credentials.postgresql.acid.zalan.do
+                  key: password
             - name: MB_DB_HOST
-              value: {{ required "database.host is required" .Values.global.dependencies.database.host }}
-{{ if .Values.global.dependencies.database.ssl.ca }}
-            - name: PGSSLMODE
-              value: "require"
-          volumeMounts:
-            - name: database-ssl-ca
-              mountPath: /etc/ssl/certs/database-ssl-ca.pem
-              subPath: database-ssl-ca.pem
-              readOnly: false
-      volumes:
-        - name: database-ssl-ca
-          configMap:
-            name: config
-            items:
-              - key: database-ssl-ca
-                path: database-ssl-ca.pem
-{{end}}
+              value: torus-metabase
