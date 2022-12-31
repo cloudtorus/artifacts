@@ -14,5 +14,5 @@ spec:
     chatwoot:
       - superuser
       - createdb
-    databases:
-      chatwoot: chatwoot
+  databases:
+    chatwoot: chatwoot

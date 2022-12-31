@@ -14,5 +14,5 @@ spec:
     metabase:
       - superuser
       - createdb
-    databases:
-      metabase: metabase
+  databases:
+    metabase: metabase
