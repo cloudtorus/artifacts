@@ -40,7 +40,7 @@ spec:
             - name: database__connection__password
               valueFrom:
                 secretKeyRef:
-                  name: ghost-cluster-secret
+                  name: {{ .Release.Name }}-cluster-secret
                   key: rootPassword
             - name: database__connection__database
               value: ghost
