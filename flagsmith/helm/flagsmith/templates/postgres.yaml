@@ -11,9 +11,8 @@ spec:
     size: 1Gi
   teamId: "torus"
   users:
-    zalando:
+    flagsmith:
       - superuser
       - createdb
-    flagsmith: [ ]
   databases:
-    flagsmith-db: zalando
+    flagsmith-db: flagsmith
