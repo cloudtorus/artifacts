@@ -13,4 +13,4 @@ mysql-innodbcluster:
   credentials:
     root:
       user: ghost
-      password: replacedByTerraform
+      password: ""
