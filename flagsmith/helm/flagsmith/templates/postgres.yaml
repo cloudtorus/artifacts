@@ -15,4 +15,4 @@ spec:
       - superuser
       - createdb
   databases:
-    flagsmith-db: flagsmith
+    flagsmithdb: flagsmith

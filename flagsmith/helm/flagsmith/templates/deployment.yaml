@@ -36,7 +36,7 @@ spec:
                   name: flagsmith.torus-flagsmith.credentials.postgresql.acid.zalan.do
                   key: password
             - name: DATABASE_URL
-              value: "postgres://$(DATABASE_USER):$(DATABASE_PASSWORD)@torus-flagsmith:5432/flagsmith-db"
+              value: "postgres://$(DATABASE_USER):$(DATABASE_PASSWORD)@torus-flagsmith:5432/flagsmithdb"
           resources:
             limits:
               cpu: "0.5"
