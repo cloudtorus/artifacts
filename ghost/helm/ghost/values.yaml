@@ -1,15 +1,16 @@
 global:
   context:
     id: ""
-  dependencies:
-    database:
-      user: ""
-      password: ""
-      host: ""
-      port: ""
-      name: ""
-      ssl:
-        ca: ""
 
 environment: production
 url: ""
+
+mysql-innodbcluster:
+  serverInstances: 2
+  routerInstances: 1
+  tls:
+    useSelfSigned: true
+  credentials:
+    root:
+      user: ghost
+      password: {{ randAlphaNum 24 | b64enc }}

@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ghost
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
@@ -31,15 +32,15 @@ spec:
             - name: database__client
               value: mysql
             - name: database__connection__host
-              value: {{ required "database.host is required" .Values.global.dependencies.database.host }}
+              value: {{ .Release.Name }}
             - name: database__connection__port
-              value: "{{ required "database.port is required" .Values.global.dependencies.database.port }}"
+              value: "3306"
             - name: database__connection__user
-              value: {{ required "database.user is required" .Values.global.dependencies.database.user }}
+              value: ghost
             - name: database__connection__password
-              value: {{ required "database.password is required" .Values.global.dependencies.database.password }}
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-cluster-secret
+                  key: rootPassword
             - name: database__connection__database
-              value: {{ required "context.id is required" .Values.global.context.id }}
-            - name: database__ssl__ca
-              value: |
-{{ required "database.ssl.ca is required" .Values.global.dependencies.database.ssl.ca | indent 16 }}
+              value: ghost

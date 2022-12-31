@@ -1,9 +1,8 @@
 version: 1.0.0
-name: Managed MySQL
+name: MySQL
 description: A free and open-source relational database management system that is widely used.
 tags:
-  - Data
-  - Primitive
+  - Database
 providers:
   - google
   - digitalocean
@@ -12,5 +11,3 @@ dependencies:
     ref: primitives/vpc
     providers:
       - google
-spec:
-  engine: pg
