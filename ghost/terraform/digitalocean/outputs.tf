@@ -1,8 +1,10 @@
-output "mysql-innodbcluster" {
+output "ghost" {
   value = {
-    credentials = {
-      root = {
-        password = random_password.mysql_password.result
+    mysql-innodbcluster = {
+      credentials = {
+        root = {
+          password = random_password.mysql_password.result
+        }
       }
     }
   }
