@@ -5,6 +5,6 @@ variable "recipe" {
 
 data "kubernetes_service" "ghost" {
   metadata {
-    name = "ghost"
+    name = "ghost-lb"
   }
 }

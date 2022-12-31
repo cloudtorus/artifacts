@@ -32,7 +32,7 @@ spec:
             - name: database__client
               value: mysql
             - name: database__connection__host
-              value: {{ .Release.Name }}
+              value: {{ .Release.Name }}-instances
             - name: database__connection__port
               value: "3306"
             - name: database__connection__user
