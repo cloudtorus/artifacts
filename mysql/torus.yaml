@@ -1,5 +1,6 @@
 version: 1.0.0
 name: MySQL
+icon: https://cdn.cloudtorus.com/static/logos/artifacts/mysql.svg
 description: A free and open-source relational database management system that is widely used.
 tags:
   - Database
@@ -7,7 +8,5 @@ providers:
   - google
   - digitalocean
 dependencies:
-  - name: vpc
-    ref: primitives/vpc
-    providers:
-      - google
+  - name: cluster
+    ref: primitives/cluster
