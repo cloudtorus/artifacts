@@ -1,7 +1,7 @@
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
-  name: flagsmith-db
+  name: torus-flagsmith
   namespace: {{ .Release.Namespace }}
 spec:
   numberOfInstances: 1
